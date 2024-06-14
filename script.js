@@ -1,7 +1,7 @@
 
 
 
-
+/*
 // return computer choice
 function getComputerChoice() {
     choice = Math.random(); // assign choice to random number between 0-1
@@ -60,5 +60,14 @@ function playGame(){
 }
 
 playGame();
+*/
+function beginGame(){
+    let startMenu = document.querySelector(".start-screen");
+    let game = document.querySelector('.game');
+    startMenu.classList.toggle('hidden');
+    game.classList.toggle('hidden');
+}
 
+let startButton = document.querySelector(".start-button");
+startButton.addEventListener('click', beginGame);
 
