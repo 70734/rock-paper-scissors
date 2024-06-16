@@ -24,6 +24,8 @@ function winGame() {
     Human: ${humanScore}
     computer ${computerScore}
     ${winner} wins the game! Yay!`)
+
+    location.reload();
 }
 
 
