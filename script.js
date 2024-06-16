@@ -20,15 +20,17 @@ function winGame() {
     let winner;
     if(computerScore < humanScore){winner = "Human";}
     else {winner = "Computer";}
-    console.log(`Human: ${humanScore}`);
-    console.log(`Computer: ${computerScore}`);
-    console.log(`${winner} wins the game! Yay!`);
+    alert(`
+    Human: ${humanScore}
+    computer ${computerScore}
+    ${winner} wins the game! Yay!`)
 }
 // Play round of games. Use moduler math to determine winner.
 function playRound(humanChoice,computerChoice){
     let compare = convertChoiceToNum(humanChoice) - convertChoiceToNum(computerChoice) + 3;
     let scoreHuman = document.querySelector('.score-human');
     let scoreComputer = document.querySelector('.score-computer');
+
 
     let roundHistory = document.querySelector(".round-history"); // where the winner of each round will be posted
     if(compare % 3 === 0) {
@@ -53,6 +55,8 @@ function playRound(humanChoice,computerChoice){
         computerScore++;
     }
 
+    scoreComputer.textContent = `Computer: ${computerScore}`; // update computer score on page
+    scoreHuman.textContent = `Human: ${humanScore}`; // update human score on page
 
     if(computerScore >= 5 || humanScore >= 5){
        winGame()}
