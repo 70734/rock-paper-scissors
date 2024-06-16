@@ -1,7 +1,5 @@
-
-
-
-/*
+let humanScore = 0;
+let computerScore = 0;
 // return computer choice
 function getComputerChoice() {
     choice = Math.random(); // assign choice to random number between 0-1
@@ -10,21 +8,6 @@ function getComputerChoice() {
     if(choice <= 1){ return"scissors"};
 }
 
-//return human choice
-function getHumanChoice() {
-    let choice = prompt("Rock, Paper, or Scissors"); //get user choice
-    choice = choice.toLowerCase();
-    
-    // validate human choice
-
-    if(choice === 'rock'){return 'rock'};
-    if(choice === 'paper'){return 'paper'};
-    if(choice === 'scissors'){return 'scissors'};
-    
-    alert("error, try again.");
-    choice = getHumanChoice();
-    return choice;
-}
 
 // convert choice to number for moduler math
 function convertChoiceToNum(choice){
@@ -32,42 +15,40 @@ function convertChoiceToNum(choice){
     if(choice === 'paper'){return 1};
     if(choice === 'scissors'){return 2};
 }
+
+function winGame() {
+    let winner;
+    if(computerScore < humanScore){winner = "Human";}
+    else {winner = "Computer";}
+    console.log(`Human: ${humanScore}`);
+    console.log(`Computer: ${computerScore}`);
+    console.log(`${winner} wins the game! Yay!`);
+}
 // Play round of games. Use moduler math to determine winner.
 function playRound(humanChoice,computerChoice){
     let compare = convertChoiceToNum(humanChoice) - convertChoiceToNum(computerChoice) + 3;
     if(compare % 3 === 0) {console.log("Its a tie!");}
     else if(compare % 3 === 1) {console.log(`Human Wins! ${humanChoice} beats ${computerChoice}`); humanScore++;}
-    else if(compare % 3 === 2) {console.log(`Computer Wins! ${computerChoice} beats ${humanChoice}`); ComputerScore++;}
-}
-
-// play 5 rounds of rock paper scissors
-function playGame(){
-    humanScore = 0;
-    ComputerScore = 0;
-
-    for(let i = 0; i<5; i++){
-        let humanChoice = getHumanChoice();
-        let computerChoice = getComputerChoice();
-        playRound(humanChoice, computerChoice);
+    else if(compare % 3 === 2) {console.log(`Computer Wins! ${computerChoice} beats ${humanChoice}`); computerScore++;}
+    if(computerScore >= 5 || humanScore >= 5){
+       winGame()}
     }
-    let winner;
-    if(ComputerScore < humanScore){winner = "Human";}
-    else {winner = "Computer";}
-    console.log(`Human: ${humanScore}`);
-    console.log(`Computer: ${ComputerScore}`);
-    console.log(`${winner} wins the game! Yay!`);
 
-}
-
-playGame();
-*/
 function beginGame(){
     let startMenu = document.querySelector(".start-screen");
     let game = document.querySelector('.game');
     startMenu.classList.toggle('hidden');
     game.classList.toggle('hidden');
+    
 }
 
 let startButton = document.querySelector(".start-button");
 startButton.addEventListener('click', beginGame);
 
+let rock = document.querySelector("#rock");
+let paper = document.querySelector("#paper");
+let scissors = document.querySelector("#scissors");
+
+rock.addEventListener("click", function() {playRound('rock', getComputerChoice());});
+paper.addEventListener("click", function() {playRound('paper', getComputerChoice());});
+scissors.addEventListener("click", function() {playRound('scissors', getComputerChoice());});

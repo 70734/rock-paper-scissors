@@ -36,4 +36,16 @@ body {
 
 .game {
     background-color: pink;
+    display: flex;
+    flex-direction: column;
+    width: 25vh;
+    height: 25vh;
+    justify-content: space-between;
 }
+
+.div-container-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
