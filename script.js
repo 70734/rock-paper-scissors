@@ -25,12 +25,19 @@ function winGame() {
     computer ${computerScore}
     ${winner} wins the game! Yay!`)
 }
+
+
 // Play round of games. Use moduler math to determine winner.
 function playRound(humanChoice,computerChoice){
     let compare = convertChoiceToNum(humanChoice) - convertChoiceToNum(computerChoice) + 3;
     let scoreHuman = document.querySelector('.score-human');
     let scoreComputer = document.querySelector('.score-computer');
+    let playerChoiceImg = document.querySelector('.human-choice');
+    let computerChoiceImg = document.querySelector('.computer-choice');
 
+    
+    playerChoiceImg.setAttribute('src', './img/' + humanChoice + '.jpg' ); // set src to show what human picked
+    computerChoiceImg.setAttribute('src', './img/' + computerChoice + '.jpg'); // set src to show what computer picked 
 
     let roundHistory = document.querySelector(".round-history"); // where the winner of each round will be posted
     if(compare % 3 === 0) {
